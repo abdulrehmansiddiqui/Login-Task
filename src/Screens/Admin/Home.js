@@ -25,19 +25,25 @@ class Home extends Component {
     }
 
     editfunction(item, index) {
-        console.log(item)
-
+        this.props.history.push({ pathname: "/EditUser", data: item })
+        // props.history.push({ 
+        //     pathname: '/register',
+        //     state: data_you_need_to_pass
+        //    });
     }
 
     deletefunction(item, index) {
-        console.log(item)
 
-        // Global.postRequest(API.ADMIN_DELETE_USER,{userid:item._id})
-        //     .then((res) => {
-        //         if (res.status == 200) {
-        //             console.log(res.data)
-        //         }
-        //     })
+        Global.postRequest(API.ADMIN_DELETE_USER, { userid: item._id })
+            .then((res) => {
+                if (res.status === 200) {
+
+                    console.log(res.data)
+                    var filtered = this.state.users.filter(function (el) { return el._id !== item._id; });
+                    this.setState({ users: filtered })
+
+                }
+            })
     }
 
     render() {
@@ -47,7 +53,7 @@ class Home extends Component {
             <div className="container">
                 <div className="text-center">
                     <h1>List Of all user</h1>
-
+                    <button className="btn btn-success" onClick={() => this.props.history.push("AddUser")} >+</button>
                     <table class="table">
                         <thead>
                             <tr>
@@ -59,17 +65,21 @@ class Home extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.users.map((item, index) => {
-                                return (
-                                    <tr>
-                                        <th scope="row">{index}</th>
-                                        <td>{item.name}</td>
-                                        <td>{item.phone ? item.phone : "-"}</td>
-                                        <td>{item.email}</td>
-                                        <td><span onClick={() => this.editfunction(item, index)}>Edit</span> / <span onClick={() => this.deletefunction(item, index)}>Delete</span></td>
-                                    </tr>
-                                )
-                            })}
+                            {
+                                this.state.users.length > 0 ?
+                                    this.state.users.map((item, index) => {
+                                        return (
+                                            <tr>
+                                                <th scope="row">{index}</th>
+                                                <td>{item.name}</td>
+                                                <td>{item.phone ? item.phone : "-"}</td>
+                                                <td>{item.email}</td>
+                                                <td><span onClick={() => this.editfunction(item, index)}>Edit</span> / <span onClick={() => this.deletefunction(item, index)}>Delete</span></td>
+                                            </tr>
+                                        )
+                                    })
+                                    : "No User to display"
+                            }
                         </tbody>
                     </table>
                     <button

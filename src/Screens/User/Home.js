@@ -15,14 +15,19 @@ class Home extends Component {
     }
 
 
-
     render() {
-
         return (
 
             <div className="container">
                 <div className="text-center">
                     <h1>Welcome User</h1>
+                    <p>
+                        <button
+                            className="btn btn-info"
+                            onClick={() => this.props.history.push("EditUser")}
+                        >Edit Profile</button>
+                    </p>
+                    <br></br>
                     <button
                         className="btn btn-dark btn-block"
                         onClick={() => this.props.history.push("Logout")}

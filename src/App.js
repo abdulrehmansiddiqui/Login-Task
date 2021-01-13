@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch, BrowserRouter as Router, } from "react-router-dom";
 // import API from "./Constants/API"
 import AdminNavigation from "./Routes/AdminNavigation"
@@ -12,9 +12,9 @@ import { connect } from "react-redux";
 
 function App(props) {
 
-  useEffect(() => {
-    console.log(props.role, 'ssss')
-  }, [])
+  // useEffect(() => {
+  //   console.log(props.role, 'ssss')
+  // }, [])
 
   return (
     <React.Fragment>
