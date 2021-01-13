@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { auth } from "../Redux/actions/auth";
+import { auth } from "../../Redux/actions/auth";
 // import { get_user } from "../Redux/actions/user";
+// import Global from "../../Constants/Global";
+// import API from "../../Constants/API";
 
 class Home extends Component {
     constructor() {
         super();
         this.state = {
+            users: [],
+
         };
     }
+
 
 
     render() {
@@ -17,13 +22,11 @@ class Home extends Component {
 
             <div className="container">
                 <div className="text-center">
-                    <h1>You Made It</h1>
+                    <h1>Welcome User</h1>
                     <button
                         className="btn btn-dark btn-block"
-                        onClick={() => this.props.updateAuth()}
-                    >
-                        Logout
-    </button>
+                        onClick={() => this.props.history.push("Logout")}
+                    >Logout</button>
                 </div>
             </div>
 

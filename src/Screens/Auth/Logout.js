@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { destory } from "../Redux/actions/auth";
-import API from "../Constants/API";
-import Global from "../Constants/Global";
+import { destory } from "../../Redux/actions/auth";
+import API from "../../Constants/API";
+import Global from "../../Constants/Global";
 
 class Logout extends Component {
     state = {
@@ -12,7 +12,7 @@ class Logout extends Component {
         this.props.updateAuth("")
         Global.removeData(API.key);
         
-        let path = '/';
+        let path = '/Login';
         this.props.history.push(path)
         window.location.reload()
         

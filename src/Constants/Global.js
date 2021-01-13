@@ -10,7 +10,15 @@ class Global {
     static getRequest(url) {
         return new Promise((resolve) => {
             const token = localStorage.getItem(API.key)
-            axios.get(API.BASE_URL + url, { headers: { Authorization: 'Bearer ' + token } })
+            axios.get(API.BASE_URL + url, {
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
+                }
+            })
                 .then((res) => {
                     // console.log(res, 'res')
                     resolve(res)
@@ -22,10 +30,19 @@ class Global {
         })
     }
 
+
     static postRequest(url, data) {
         return new Promise(resolve => {
             const token = localStorage.getItem(API.key)
-            axios.post(API.BASE_URL + url, data, { headers: { Authorization: 'Bearer ' + token } })
+            axios.post(API.BASE_URL + url, data, {
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
+                }
+            })
                 .then((res) => {
                     // console.log(res, 'res')
                     resolve(res)
