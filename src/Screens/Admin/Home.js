@@ -24,9 +24,13 @@ class Home extends Component {
             })
     }
 
+    viewUser(item) {
+        this.props.history.push({ pathname: "/ViewUser", data: item })
+    }
+
     editfunction(item, index) {
         this.props.history.push({ pathname: "/EditUser", data: item })
-        // props.history.push({ 
+        // props.history.push({
         //     pathname: '/register',
         //     state: data_you_need_to_pass
         //    });
@@ -53,7 +57,8 @@ class Home extends Component {
             <div className="container">
                 <div className="text-center">
                     <h1>List Of all user</h1>
-                    <button className="btn btn-success" onClick={() => this.props.history.push("AddUser")} >+</button>
+                    <button className="btn btn-success " onClick={() => this.props.history.push("AddUser")} >+ add user </button>
+                    {/* <button className="btn btn-success" onClick={() => this.props.history.push("AddLead")} >+ add lead </button> */}
                     <table class="table">
                         <thead>
                             <tr>
@@ -70,11 +75,11 @@ class Home extends Component {
                                     this.state.users.map((item, index) => {
                                         return (
                                             <tr>
-                                                <th scope="row">{index}</th>
+                                                <th scope="row">{index+1}</th>
                                                 <td>{item.name}</td>
                                                 <td>{item.phone ? item.phone : "-"}</td>
                                                 <td>{item.email}</td>
-                                                <td><span onClick={() => this.editfunction(item, index)}>Edit</span> / <span onClick={() => this.deletefunction(item, index)}>Delete</span></td>
+                                                <td><span onClick={() => this.viewUser(item, index)}>View</span> / <span onClick={() => this.editfunction(item, index)}>Edit</span>  / <span onClick={() => this.deletefunction(item, index)}>Delete</span></td>
                                             </tr>
                                         )
                                     })

@@ -111,11 +111,9 @@ function AddUser(props) {
                   className="btn btn-dark btn-block"
                   onClick={userAddUser.bind(this)}
                 >
-                  NEXT
+                  Add User
                 </button>
               }
-
-              <p className="smalltext" onClick={() => props.history.push("Login")} >Back to login</p>
 
             </div>
 

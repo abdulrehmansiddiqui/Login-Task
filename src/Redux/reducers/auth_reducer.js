@@ -1,7 +1,8 @@
 const initialState = {
+    id: '',
     auth: '',
     role: 0,
-    expires_at: '',
+    // expires_at: '',
 }
 
 const auth = (state = initialState, action) => {
@@ -9,8 +10,9 @@ const auth = (state = initialState, action) => {
         case 'UPDATE_AUTH':
             return {
                 auth: action.payload,
+                id: action.payload.id,
                 role: action.payload.role,
-                expires_at: action.payload,
+                // expires_at: action.payload,
             };
         case 'DESTORY_AUTH':
             return {

@@ -5,7 +5,7 @@ import { auth } from "../../Redux/actions/auth";
 import Global from "../../Constants/Global";
 import API from "../../Constants/API";
 
-class Home extends Component {
+class EditUser extends Component {
     constructor() {
         super();
         this.state = {
@@ -122,4 +122,4 @@ const mapDispatchToProps = (dispatch) => {
         updateAuth: (data) => { dispatch(auth(data)) },
     }
 }
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(null, mapDispatchToProps)(EditUser)
